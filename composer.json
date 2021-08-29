@@ -1,0 +1,29 @@
+{
+  "name": "hughbris/sasher",
+  "type": "grav-plugin",
+  "description": "Creates a ribbon or sash across website pages for (e.g.) environments, messages",
+  "keywords": ["plugin"],
+  "homepage": "https://github.com/hughbris/grav-plugin-sasher",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hugh Barnes",
+      "email": "dev@hubns.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grav\\Plugin\\Sasher\\": "classes/"
+    },
+    "classmap":  ["sasher.php"]
+  },
+  "config": {
+    "platform": {
+      "php": "7.1.3"
+    }
+  }
+}
