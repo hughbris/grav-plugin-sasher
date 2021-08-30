@@ -10,6 +10,10 @@ use Grav\Common\Plugin;
  */
 class SasherPlugin extends Plugin
 {
+	private $defaults = [
+		'message' => '',
+		];
+
 	/**
 	 * @return array
 	 *
@@ -54,11 +58,32 @@ class SasherPlugin extends Plugin
 		// Enable the main events we are interested in
 		$this->enable([
 			'onAssetsInitialized' => ['addPluginAssets', 0],
+			'onOutputGenerated' => ['injectSash', 0],
 		]);
 	}
 
 	public function addPluginAssets() {
 		$this->grav['assets']->addCss('plugins://sasher/css/sash-ribbon.css');
 	}
+
+	public function injectSash() { // adapted from https://github.com/aricooperdavis/grav-plugin-custom-banner onOutputGenerated()
+
+        // Get plugin config or fill with defaults if undefined
+		$config = array_merge($this->defaults, $this->config());
+
+		// TODO: move this to a template file ??
+        $sash = <<<EOD
+		<div class="sash-box">
+			<div class="ribbon ribbon-top-left"><span>{$config['message']}</span></div>
+		</div>
+EOD;
+
+        // Add banner to grav output
+        // if (!in_array($this->grav['uri']->url(), $config['exclude-pages'])) {
+            $output = $this->grav->output;
+            $output = preg_replace('/(\<body).*?(\>)/i', '${0}'.$sash, $output, 1);
+            $this->grav->output = $output;
+        // }
+    }
 
 }
