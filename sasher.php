@@ -53,7 +53,12 @@ class SasherPlugin extends Plugin
 
 		// Enable the main events we are interested in
 		$this->enable([
-			// Put your main events here
+			'onAssetsInitialized' => ['addPluginAssets', 0],
 		]);
 	}
+
+	public function addPluginAssets() {
+		$this->grav['assets']->addCss('plugins://sasher/css/sash-ribbon.css');
+	}
+
 }
