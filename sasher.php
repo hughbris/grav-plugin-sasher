@@ -38,7 +38,6 @@ class SasherPlugin extends Plugin
 	 */
 	public function autoload(): ClassLoader
 	{
-		// run `cd /var/www/grav/user/plugins/sasher` and `composer update` to initialize the autoloader
 		return require __DIR__ . '/vendor/autoload.php';
 	}
 
