@@ -48,9 +48,13 @@ Note that if you use the Admin Plugin, a file with your configuration named sash
 
 ## Credits
 
-**Did you incorporate third-party code? Want to thank somebody?**
+* https://codepen.io/nxworld/pen/oLdoWb
+* https://github.com/aricooperdavis/grav-plugin-custom-banner
 
 ## To Do
 
-- [ ] Future plans, if any
-
+- [ ] Customise colours, opacity, position, border, other styles
+- [ ] Provide a JS DOM injection option, I can't decide which is nicer :{
+- [ ] Support exclude and include pages and intelligently pick a default state
+- [ ] Fill out docs
+- [ ] Create admin blueprints
