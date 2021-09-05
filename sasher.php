@@ -11,7 +11,7 @@ use Grav\Common\Plugin;
 class SasherPlugin extends Plugin
 {
 	private $defaults = [
-		'message' => '',
+		'message' => '&nbsp;', // this ugliness prevents a thinner line which doesn't align with the ribbon "folds"
 		];
 
 	/**
