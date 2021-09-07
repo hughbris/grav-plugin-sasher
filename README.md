@@ -42,6 +42,13 @@ enabled: true
 
 Note that if you use the Admin Plugin, a file with your configuration named sasher.yaml will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.
 
+### Style tweaks
+
+You can override or supplement any styles in [the CSS provided](css/sash-ribbon.css):
+
+* **in the theme** by creating a file named `sasher-custom.css` in the `css` folder of your theme (so `user/themes/<themename>/css/sasher-custom.css`); _or_
+* **for the environment** by creating a file named `custom.css` in a `config/plugins/sasher` folder in your environment configuration folder (so `user/env/<env.domain>/config/plugins/sasher/custom.css`).
+
 ## Usage
 
 **Describe how to use the plugin.**
@@ -53,7 +60,7 @@ Note that if you use the Admin Plugin, a file with your configuration named sash
 
 ## To Do
 
-- [ ] Customise colours, opacity, position, border, other styles
+- [x] Customise colours, opacity, position, border, other styles
 - [ ] Provide a JS DOM injection option, I can't decide which is nicer :{
 - [ ] Support exclude and include pages and intelligently pick a default state
 - [ ] Fill out docs
