@@ -38,6 +38,9 @@ Here is the default configuration and an explanation of available options:
 
 ```yaml
 enabled: true
+# message: # message on the sash banner (defaults to blank)
+# method: server # 'server' or 'client' depending on whether the sash is inserted client (JS) or server side. Client side allows us to support the next option, `dom_parent_selector`.
+# dom_parent_selector: body # When `method: client` is set, this option sets an expression which is used to find the DOM node, after which we want our sash to be inserted. Expression must be supported by DOM Node .querySelector method and will skip insertion if selection finds nothing.
 ```
 
 Note that if you use the Admin Plugin, a file with your configuration named sasher.yaml will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.

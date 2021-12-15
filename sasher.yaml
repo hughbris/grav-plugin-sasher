@@ -1,3 +1,4 @@
 enabled: true
 # message:
-# 
+# method: server # /client
+# dom_parent_selector: body

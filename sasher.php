@@ -12,7 +12,11 @@ class SasherPlugin extends Plugin
 {
 	private $defaults = [
 		'message' => '&nbsp;', // this ugliness prevents a thinner line which doesn't align with the ribbon "folds"
+		'method' => 'server',
+		'dom_parent_selector' => 'body',
 		];
+
+	private $options, $snippet;
 
 	/**
 	 * @return array
@@ -55,6 +59,14 @@ class SasherPlugin extends Plugin
 			return;
 		}
 
+		$this->options = array_merge($this->defaults, $this->config());
+
+		$this->snippet = <<<EOS
+		<div class="sash-box">
+			<div class="ribbon ribbon-top-left"><span>{$this->options['message']}</span></div>
+		</div>
+EOS;
+
 		// Enable the main events we are interested in
 		$this->enable([
 			'onAssetsInitialized' => ['addPluginAssets', 0],
@@ -66,26 +78,33 @@ class SasherPlugin extends Plugin
 		$this->grav['assets']->addCss('plugins://sasher/css/sash-ribbon.css');
 		$this->grav['assets']->addCss('theme://css/sasher-custom.css');
 		$this->grav['assets']->addCss('environment://config/plugins/sasher/custom.css');
+
+		if ($this->options['method'] == 'client') {
+			$escaped_snippet = json_encode($this->snippet);
+			$inline_js = <<<EOJ
+			window.addEventListener('load', function() {
+				var snippet_parent = document.querySelector('{$this->options['dom_parent_selector']}');
+				if (snippet_parent) {
+					snippet_parent.insertAdjacentHTML('afterbegin', $escaped_snippet);
+					}
+				});
+EOJ;
+			$this->grav['assets']->addInlineJs($inline_js);
+		}
+
 	}
 
 	public function injectSash() { // adapted from https://github.com/aricooperdavis/grav-plugin-custom-banner onOutputGenerated()
 
-        // Get plugin config or fill with defaults if undefined
-		$config = array_merge($this->defaults, $this->config());
+		if ($this->options['method'] == 'server') {
 
-		// TODO: move this to a template file ??
-        $sash = <<<EOD
-		<div class="sash-box">
-			<div class="ribbon ribbon-top-left"><span>{$config['message']}</span></div>
-		</div>
-EOD;
-
-        // Add banner to grav output
-        // if (!in_array($this->grav['uri']->url(), $config['exclude-pages'])) {
-            $output = $this->grav->output;
-            $output = preg_replace('/(\<body).*?(\>)/i', '${0}'.$sash, $output, 1);
-            $this->grav->output = $output;
-        // }
+			// Add banner to grav output
+			// if (!in_array($this->grav['uri']->url(), $config['exclude-pages'])) {
+				$output = $this->grav->output;
+				$output = preg_replace('/(\<body).*?(\>)/i', '${0}' . $this->snippet, $output, 1);
+				$this->grav->output = $output;
+			// }
+		}
     }
 
 }
