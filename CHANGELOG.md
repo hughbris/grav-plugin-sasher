@@ -2,7 +2,7 @@
 ##  07-09-2021
 
 1. [](#improved)
-    * Add sash customisation stylesheet locations to assets
+    * Add sash customisation stylesheet locations to assets (b5b41f3)
 
 # v0.1.0pre2
 ##  05-09-2021

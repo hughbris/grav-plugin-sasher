@@ -46,8 +46,10 @@ Note that if you use the Admin Plugin, a file with your configuration named sash
 
 You can override or supplement any styles in [the CSS provided](css/sash-ribbon.css):
 
-* **in the theme** by creating a file named `sasher-custom.css` in the `css` folder of your theme (so `user/themes/<themename>/css/sasher-custom.css`); _or_
-* **for the environment** by creating a file named `custom.css` in a `config/plugins/sasher` folder in your environment configuration folder (so `user/env/<env.domain>/config/plugins/sasher/custom.css`).
+* **in the theme** by creating a stylesheet file named `sasher-custom.css` in the `css` folder of your theme (so `user/themes/<themename>/css/sasher-custom.css`);
+* **for the environment** by supplying a stylesheet named `custom.css` in a `config/plugins/sasher` folder in your environment configuration folder (so `user/env/<env.domain>/config/plugins/sasher/custom.css`).
+
+You can supply either or both of these stylesheets. If you specify style declarations of equivalent precedence in the environment CSS file, they will override any provided in the theme (or provided with the plugin) according to [CSS cascading rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade).
 
 ## Usage
 
@@ -60,8 +62,9 @@ You can override or supplement any styles in [the CSS provided](css/sash-ribbon.
 
 ## To Do
 
-- [x] Customise colours, opacity, position, border, other styles
+- [x] Customise colours, opacity, position, border, other styles (b5b41f3)
 - [ ] Provide a JS DOM injection option, I can't decide which is nicer :{
 - [ ] Support exclude and include pages and intelligently pick a default state
+- [ ] Something that's OK on mobile
 - [ ] Fill out docs
 - [ ] Create admin blueprints
