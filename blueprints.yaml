@@ -8,8 +8,8 @@ author:
   name: Hugh Barnes
   email: dev@hubns.com
 homepage: https://github.com/hughbris/grav-plugin-sasher
-demo: http://demo.yoursite.com
-keywords: grav, plugin, etc
+# demo: http://demo.yoursite.com
+# keywords: grav, plugin, etc
 bugs: https://github.com/hughbris/grav-plugin-sasher/issues
 docs: https://github.com/hughbris/grav-plugin-sasher/blob/develop/README.md
 license: MIT
