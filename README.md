@@ -47,9 +47,10 @@ Note that if you use the Admin Plugin, a file with your configuration named sash
 You can override or supplement any styles in [the CSS provided](css/sash-ribbon.css):
 
 * **in the theme** by creating a stylesheet file named `sasher-custom.css` in the `css` folder of your theme (so `user/themes/<themename>/css/sasher-custom.css`);
+* **in the site config**  by providing a stylesheet named `custom.css` in `config/plugins/sasher` folder in your user folder (so `user/config/plugins/sasher/custom.css`).
 * **for the environment** by supplying a stylesheet named `custom.css` in a `config/plugins/sasher` folder in your environment configuration folder (so `user/env/<env.domain>/config/plugins/sasher/custom.css`).
 
-You can supply either or both of these stylesheets. If you specify style declarations of equivalent precedence in the environment CSS file, they will override any provided in the theme (or provided with the plugin) according to [CSS cascading rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade).
+You can supply any or all of these stylesheets. If you specify style declarations of equivalent precedence in the environment CSS file, they will override any provided in config, the theme, or provided with the plugin, according to [CSS cascading rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade).
 
 ## Usage
 

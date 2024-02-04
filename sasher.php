@@ -65,6 +65,7 @@ class SasherPlugin extends Plugin
 	public function addPluginAssets() {
 		$this->grav['assets']->addCss('plugins://sasher/css/sash-ribbon.css');
 		$this->grav['assets']->addCss('theme://css/sasher-custom.css');
+		$this->grav['assets']->addCss('user://config/plugins/sasher/custom.css');
 		$this->grav['assets']->addCss('environment://config/plugins/sasher/custom.css');
 	}
 
